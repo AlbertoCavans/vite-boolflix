@@ -34,10 +34,10 @@ export default {
 
     flagForLanguage(language) {
       if (language == "it") {
-        return "./assets/images/it.svg";
+        return new URL("./assets/imgs/it.webp", import.meta.url).href;
       }
       if (language == "en") {
-        return "./assets/images/uk.svg";
+        return new URL("./assets/imgs/gb.webp", import.meta.url).href;
       }
 
       return "bandiera mancante";
@@ -66,7 +66,14 @@ export default {
     <ul v-for="movie in store.movies" class="my-3">
       <li>Titolo: {{ movie.title }}</li>
       <li>Titolo originale: {{ movie.original_title }}</li>
-      <li>Lingua: {{ flagForLanguage(movie.original_language) }}</li>
+      <li>
+        Lingua:
+        <img
+          :src="flagForLanguage(movie.original_language)"
+          alt="flag language"
+          width="30px"
+        />
+      </li>
       <li>Voto: {{ movie.vote_average }}</li>
     </ul>
   </div>
