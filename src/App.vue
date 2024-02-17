@@ -11,7 +11,7 @@ export default {
   },
 
   methods: {
-    startSearch() {
+    startSearchMovie() {
       axios
         .get(this.store.api.apiUrl + "/search/movie", {
           params: {
@@ -32,6 +32,27 @@ export default {
         });
     },
 
+    startSearchTVSeries() {
+      axios
+        .get(this.store.api.apiUrl + "/search/tv", {
+          params: {
+            api_key: store.api.apiKey,
+            query: this.inputSearchBar,
+          },
+        })
+        .then((response) => {
+          /* console.log(response.data.results); */
+          store.series = response.data.results.map((serie) => {
+            return {
+              title: serie.name,
+              original_title: serie.original_name,
+              original_language: serie.original_language,
+              vote_average: serie.vote_average,
+            };
+          });
+        });
+    },
+
     flagForLanguage(language) {
       if (language == "it") {
         return new URL("./assets/imgs/it.webp", import.meta.url).href;
@@ -45,6 +66,11 @@ export default {
 
     refreshInputSearch() {
       store.inputSearchBar = this.inputSearchBar;
+    },
+
+    startSearch() {
+      this.startSearchMovie();
+      this.startSearchTVSeries();
     },
   },
 };
