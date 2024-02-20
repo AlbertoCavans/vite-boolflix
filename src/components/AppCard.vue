@@ -25,8 +25,10 @@ export default {
 
 <template>
   <ul class="my-3">
-    <li>Titolo: {{ infoCard.title }}</li>
-    <li>Titolo originale: {{ infoCard.original_title }}</li>
+    <li class="align-self-start">Titolo: {{ infoCard.title }}</li>
+    <li class="align-self-start">
+      Titolo originale: {{ infoCard.original_title }}
+    </li>
     <li>
       Lingua:
       <img
@@ -51,6 +53,7 @@ export default {
       <img
         :src="`https://image.tmdb.org/t/p/w342/${infoCard.poster_path}`"
         alt=""
+        height="500px"
       />
     </li>
   </ul>
