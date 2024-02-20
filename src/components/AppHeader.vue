@@ -2,14 +2,29 @@
 export default {
   data() {
     return {
-      title: "Hello world",
+      inputSearchBar: "",
     };
   },
+
+  emits: ["search"],
 };
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <div class="container mt-3 d-flex">
+    <input
+      type="text"
+      @keyup.enter="$emit('search', this.inputSearchBar)"
+      class="form-control"
+      v-model="inputSearchBar"
+    />
+    <button
+      class="btn btn-success"
+      @click="$emit('search', this.inputSearchBar)"
+    >
+      Cerca
+    </button>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

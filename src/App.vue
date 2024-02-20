@@ -1,22 +1,25 @@
 <script>
 import axios from "axios";
 import { store } from "./store";
+import AppHeader from "./components/AppHeader.vue";
 
 export default {
   data() {
     return {
       store,
-      inputSearchBar: "",
+      /* inputSearchBar: "", */
     };
   },
 
+  components: { AppHeader },
+
   methods: {
-    startSearchMovie() {
+    startSearchMovie(inputSearchBar) {
       axios
         .get(this.store.api.apiUrl + "/search/movie", {
           params: {
             api_key: store.api.apiKey,
-            query: this.inputSearchBar,
+            query: inputSearchBar,
           },
         })
         .then((response) => {
@@ -32,12 +35,12 @@ export default {
         });
     },
 
-    startSearchTVSeries() {
+    startSearchTVSeries(inputSearchBar) {
       axios
         .get(this.store.api.apiUrl + "/search/tv", {
           params: {
             api_key: store.api.apiKey,
-            query: this.inputSearchBar,
+            query: inputSearchBar,
           },
         })
         .then((response) => {
@@ -68,25 +71,16 @@ export default {
       store.inputSearchBar = this.inputSearchBar;
     },
 
-    startSearch() {
-      this.startSearchMovie();
-      this.startSearchTVSeries();
+    startSearch(inputSearchBar) {
+      this.startSearchMovie(inputSearchBar);
+      this.startSearchTVSeries(inputSearchBar);
     },
   },
 };
 </script>
 
 <template>
-  <div class="container mt-3 d-flex">
-    <input
-      type="text"
-      @keyup.enter="startSearch()"
-      class="form-control"
-      @keyup="refreshInputSearch()"
-      v-model="inputSearchBar"
-    />
-    <button class="btn btn-success" @click="startSearch()">Cerca</button>
-  </div>
+  <app-header @search="startSearch"></app-header>
 
   <div class="mt-4">
     <h3>Series</h3>
