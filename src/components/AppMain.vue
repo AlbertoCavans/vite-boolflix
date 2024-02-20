@@ -37,6 +37,13 @@ export default {
         />
       </li>
       <li>Voto: {{ serie.vote_average }}</li>
+
+      <li>
+        <img
+          :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`"
+          alt=""
+        />
+      </li>
     </ul>
 
     <h3>Movies</h3>
@@ -52,6 +59,13 @@ export default {
         />
       </li>
       <li>Voto: {{ movie.vote_average }}</li>
+
+      <li>
+        <img
+          :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
+          alt=""
+        />
+      </li>
     </ul>
   </div>
 </template>

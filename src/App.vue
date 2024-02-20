@@ -16,7 +16,7 @@ export default {
   methods: {
     startSearchMovie(inputSearchBar) {
       axios
-        .get(this.store.api.apiUrl + "/search/movie", {
+        .get(`${this.store.api.apiUrl}` + "/search/movie", {
           params: {
             api_key: store.api.apiKey,
             query: inputSearchBar,
@@ -28,7 +28,7 @@ export default {
               title: movie.title,
               original_title: movie.original_title,
               original_language: movie.original_language,
-              vote_average: movie.vote_average,
+              vote_average: Math.ceil(movie.vote_average / 2),
               poster_path: movie.poster_path,
             };
           });
@@ -37,7 +37,7 @@ export default {
 
     startSearchTVSeries(inputSearchBar) {
       axios
-        .get(this.store.api.apiUrl + "/search/tv", {
+        .get(`${this.store.api.apiUrl}` + "/search/tv", {
           params: {
             api_key: store.api.apiKey,
             query: inputSearchBar,
@@ -49,7 +49,7 @@ export default {
               title: serie.name,
               original_title: serie.original_name,
               original_language: serie.original_language,
-              vote_average: serie.vote_average,
+              vote_average: Math.ceil(serie.vote_average / 2),
               poster_path: serie.poster_path,
             };
           });
