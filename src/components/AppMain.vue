@@ -36,7 +36,17 @@ export default {
           width="30px"
         />
       </li>
-      <li>Voto: {{ serie.vote_average }}</li>
+      <li>
+        Voto:
+        <font-awesome-icon
+          v-for="star in 5"
+          :icon="
+            star <= serie.vote_average
+              ? 'fa-solid fa-star'
+              : 'fa-regular fa-star'
+          "
+        />
+      </li>
 
       <li>
         <img
@@ -58,7 +68,17 @@ export default {
           width="30px"
         />
       </li>
-      <li>Voto: {{ movie.vote_average }}</li>
+      <li>
+        Voto:
+        <font-awesome-icon
+          v-for="star in 5"
+          :icon="
+            star <= movie.vote_average
+              ? 'fa-solid fa-star'
+              : 'fa-regular fa-star'
+          "
+        />
+      </li>
 
       <li>
         <img
