@@ -25,6 +25,7 @@ export default {
         .then((response) => {
           store.movies = response.data.results.map((movie) => {
             return {
+              id: movie.id,
               title: movie.title,
               original_title: movie.original_title,
               original_language: movie.original_language,
@@ -46,6 +47,7 @@ export default {
         .then((response) => {
           store.series = response.data.results.map((serie) => {
             return {
+              id: serie.id,
               title: serie.name,
               original_title: serie.original_name,
               original_language: serie.original_language,

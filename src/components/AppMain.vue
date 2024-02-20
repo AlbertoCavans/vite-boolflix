@@ -16,7 +16,11 @@ export default {
 <template>
   <div class="mt-4">
     <h3>Series</h3>
-    <app-card v-for="serie in store.series" :infoCard="serie"></app-card>
+    <app-card
+      v-for="serie in store.series"
+      :infoCard="serie"
+      :key="serie.id"
+    ></app-card>
     <!--     <ul v-for="serie in store.series" class="my-3">
       <li>Titolo: {{ serie.title }}</li>
       <li>Titolo originale: {{ serie.original_title }}</li>
@@ -50,7 +54,11 @@ export default {
 
     <h3>Movies</h3>
 
-    <app-card v-for="movie in store.movies" :infoCard="movie"></app-card>
+    <app-card
+      v-for="movie in store.movies"
+      :infoCard="movie"
+      :key="movie.id"
+    ></app-card>
 
     <!--     <ul v-for="movie in store.movies" class="my-3">
       <li>Titolo: {{ movie.title }}</li>
