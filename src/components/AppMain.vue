@@ -1,23 +1,14 @@
 <script>
 import { store } from "../store";
+import AppCard from "./AppCard.vue";
 export default {
   data() {
     return {
       store,
     };
   },
-
-  methods: {
-    flagForLanguage(language) {
-      if (language == "it") {
-        return new URL("../assets/imgs/it.webp", import.meta.url).href;
-      }
-      if (language == "en") {
-        return new URL("../assets/imgs/gb.webp", import.meta.url).href;
-      }
-
-      return "bandiera mancante";
-    },
+  components: {
+    AppCard,
   },
 };
 </script>
@@ -25,7 +16,8 @@ export default {
 <template>
   <div class="mt-4">
     <h3>Series</h3>
-    <ul v-for="serie in store.series" class="my-3">
+    <app-card v-for="serie in store.series" :infoCard="serie"></app-card>
+    <!--     <ul v-for="serie in store.series" class="my-3">
       <li>Titolo: {{ serie.title }}</li>
       <li>Titolo originale: {{ serie.original_title }}</li>
       <li>
@@ -54,10 +46,13 @@ export default {
           alt=""
         />
       </li>
-    </ul>
+    </ul> -->
 
     <h3>Movies</h3>
-    <ul v-for="movie in store.movies" class="my-3">
+
+    <app-card v-for="movie in store.movies" :infoCard="movie"></app-card>
+
+    <!--     <ul v-for="movie in store.movies" class="my-3">
       <li>Titolo: {{ movie.title }}</li>
       <li>Titolo originale: {{ movie.original_title }}</li>
       <li>
@@ -86,7 +81,7 @@ export default {
           alt=""
         />
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
